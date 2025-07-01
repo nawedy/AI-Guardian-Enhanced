@@ -259,7 +259,7 @@ services:
       dockerfile: Dockerfile
     container_name: ai_guardian_web_dashboard
     ports:
-      - "3000:80"
+      - "3002:80"
     environment:
       - API_BASE_URL=http://api-gateway:8000
     depends_on:

@@ -21,7 +21,7 @@ COPY --from=builder /app/wheels /wheels
 RUN pip install --no-cache /wheels/*
 
 # Copy the application source code
-COPY ./src .
+COPY . .
 
 # Expose the port the app runs on
 EXPOSE 5007
@@ -31,4 +31,4 @@ ENV PYTHONUNBUFFERED 1
 ENV PYTHONPATH /app
 
 # Run the application with Gunicorn
-CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:5007", "main:app"] 
+CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:5007", "src.main:app"] 
