@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Shield, Activity, Users, Settings, FileText, AlertTriangle, BarChart3 } from 'lucide-react';
+import { Shield, Activity, Users, Settings, FileText, AlertTriangle, BarChart3, Link } from 'lucide-react';
 import './App.css';
 
 // Import theme system
@@ -15,6 +15,7 @@ import TeamManagement from './components/TeamManagement';
 import SettingsPage from './components/SettingsPage';
 import VulnerabilityDetails from './components/VulnerabilityDetails';
 import AnalyticsDashboard from './components/analytics/AnalyticsDashboard';
+import IntegrationsManager from './components/integrations/IntegrationsManager';
 
 // App content component with theme awareness
 const AppContent = () => {
@@ -54,6 +55,12 @@ const AppContent = () => {
       label: 'Real-Time Monitor',
       icon: Shield,
       path: '/real-time'
+    },
+    {
+      id: 'integrations',
+      label: 'Enterprise Integrations',
+      icon: Link,
+      path: '/integrations'
     },
     {
       id: 'team',
@@ -166,6 +173,10 @@ const AppContent = () => {
               <Route 
                 path="/real-time" 
                 element={<RealTimeMonitor currentUser={currentUser} />} 
+              />
+              <Route 
+                path="/integrations" 
+                element={<IntegrationsManager />} 
               />
               <Route 
                 path="/team" 
