@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Shield, Activity, Users, Settings, FileText, AlertTriangle, BarChart3 } from 'lucide-react';
 import './App.css';
 
+// Import theme system
+import { ThemeProvider, useTheme } from './components/darkmode/ThemeProvider';
+
 // Import components
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
@@ -13,7 +16,9 @@ import SettingsPage from './components/SettingsPage';
 import VulnerabilityDetails from './components/VulnerabilityDetails';
 import AnalyticsDashboard from './components/analytics/AnalyticsDashboard';
 
-function App() {
+// App content component with theme awareness
+const AppContent = () => {
+  const { theme } = useTheme();
   const [currentUser, setCurrentUser] = useState({
     id: 'user_001',
     name: 'John Doe',
@@ -122,7 +127,13 @@ function App() {
 
   return (
     <Router>
-      <div className="flex h-screen bg-gray-50">
+      <div className={`
+        flex h-screen transition-colors duration-300
+        ${theme === 'dark' 
+          ? 'bg-zinc-950' 
+          : 'bg-gray-50'
+        }
+      `}>
         <Sidebar
           navigationItems={navigationItems}
           collapsed={sidebarCollapsed}
@@ -173,6 +184,14 @@ function App() {
         </main>
       </div>
     </Router>
+  );
+};
+
+function App() {
+  return (
+    <ThemeProvider defaultTheme="dark">
+      <AppContent />
+    </ThemeProvider>
   );
 }
 
