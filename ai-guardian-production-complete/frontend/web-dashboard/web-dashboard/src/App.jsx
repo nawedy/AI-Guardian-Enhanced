@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Shield, Activity, Users, Settings, FileText, AlertTriangle, BarChart3, Link, Code, Brain, Scan } from 'lucide-react';
+import { Shield, Activity, Users, Settings, FileText, AlertTriangle, BarChart3, Link, Code, Brain, Scan, GitBranch, FolderOpen } from 'lucide-react';
 import './App.css';
 
 // Import theme system
@@ -19,6 +19,8 @@ import IntegrationsManager from './components/integrations/IntegrationsManager';
 import SecurityManager from './components/security/SecurityManager';
 import AIModelManager from './components/ai/AIModelManager';
 import SmartCodeAnalyzer from './components/ai/SmartCodeAnalyzer';
+import ProjectManager from './components/projects/ProjectManager';
+import RepoScanner from './components/projects/RepoScanner';
 
 // App content component with theme awareness
 const AppContent = () => {
@@ -82,6 +84,18 @@ const AppContent = () => {
       label: 'Smart Code Analyzer',
       icon: Scan,
       path: '/code-analyzer'
+    },
+    {
+      id: 'projects',
+      label: 'Project Integration',
+      icon: GitBranch,
+      path: '/projects'
+    },
+    {
+      id: 'repo-scanner',
+      label: 'Repository Scanner',
+      icon: FolderOpen,
+      path: '/repo-scanner'
     },
     {
       id: 'team',
@@ -210,6 +224,18 @@ const AppContent = () => {
               <Route 
                 path="/code-analyzer" 
                 element={<SmartCodeAnalyzer />} 
+              />
+              <Route 
+                path="/projects" 
+                element={<ProjectManager />} 
+              />
+              <Route 
+                path="/repo-scanner" 
+                element={<RepoScanner />} 
+              />
+              <Route 
+                path="/repo-scanner/:projectId" 
+                element={<RepoScanner />} 
               />
               <Route 
                 path="/team" 
