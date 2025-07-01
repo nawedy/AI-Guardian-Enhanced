@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Shield, Activity, Users, Settings, FileText, AlertTriangle } from 'lucide-react';
+import { Shield, Activity, Users, Settings, FileText, AlertTriangle, BarChart3 } from 'lucide-react';
 import './App.css';
 
 // Import components
@@ -11,6 +11,7 @@ import RealTimeMonitor from './components/RealTimeMonitor';
 import TeamManagement from './components/TeamManagement';
 import SettingsPage from './components/SettingsPage';
 import VulnerabilityDetails from './components/VulnerabilityDetails';
+import AnalyticsDashboard from './components/analytics/AnalyticsDashboard';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -30,6 +31,12 @@ function App() {
       label: 'Dashboard',
       icon: Activity,
       path: '/dashboard'
+    },
+    {
+      id: 'analytics',
+      label: 'Analytics v4.2',
+      icon: BarChart3,
+      path: '/analytics'
     },
     {
       id: 'scan-results',
@@ -136,6 +143,10 @@ function App() {
                     setNotifications={setNotifications}
                   />
                 } 
+              />
+              <Route 
+                path="/analytics" 
+                element={<AnalyticsDashboard />} 
               />
               <Route 
                 path="/scan-results" 
