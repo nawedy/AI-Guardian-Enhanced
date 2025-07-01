@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Shield, Activity, Users, Settings, FileText, AlertTriangle, BarChart3, Link } from 'lucide-react';
+import { Shield, Activity, Users, Settings, FileText, AlertTriangle, BarChart3, Link, Code } from 'lucide-react';
 import './App.css';
 
 // Import theme system
@@ -16,6 +16,7 @@ import SettingsPage from './components/SettingsPage';
 import VulnerabilityDetails from './components/VulnerabilityDetails';
 import AnalyticsDashboard from './components/analytics/AnalyticsDashboard';
 import IntegrationsManager from './components/integrations/IntegrationsManager';
+import SecurityManager from './components/security/SecurityManager';
 
 // App content component with theme awareness
 const AppContent = () => {
@@ -61,6 +62,12 @@ const AppContent = () => {
       label: 'Enterprise Integrations',
       icon: Link,
       path: '/integrations'
+    },
+    {
+      id: 'security',
+      label: 'Enhanced Security',
+      icon: Code,
+      path: '/security'
     },
     {
       id: 'team',
@@ -177,6 +184,10 @@ const AppContent = () => {
               <Route 
                 path="/integrations" 
                 element={<IntegrationsManager />} 
+              />
+              <Route 
+                path="/security" 
+                element={<SecurityManager />} 
               />
               <Route 
                 path="/team" 
