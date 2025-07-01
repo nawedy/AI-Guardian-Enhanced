@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Shield, Activity, Users, Settings, FileText, AlertTriangle, BarChart3, Link, Code } from 'lucide-react';
+import { Shield, Activity, Users, Settings, FileText, AlertTriangle, BarChart3, Link, Code, Brain, Scan } from 'lucide-react';
 import './App.css';
 
 // Import theme system
@@ -17,6 +17,8 @@ import VulnerabilityDetails from './components/VulnerabilityDetails';
 import AnalyticsDashboard from './components/analytics/AnalyticsDashboard';
 import IntegrationsManager from './components/integrations/IntegrationsManager';
 import SecurityManager from './components/security/SecurityManager';
+import AIModelManager from './components/ai/AIModelManager';
+import SmartCodeAnalyzer from './components/ai/SmartCodeAnalyzer';
 
 // App content component with theme awareness
 const AppContent = () => {
@@ -68,6 +70,18 @@ const AppContent = () => {
       label: 'Enhanced Security',
       icon: Code,
       path: '/security'
+    },
+    {
+      id: 'ai-models',
+      label: 'AI & ML Management',
+      icon: Brain,
+      path: '/ai-models'
+    },
+    {
+      id: 'code-analyzer',
+      label: 'Smart Code Analyzer',
+      icon: Scan,
+      path: '/code-analyzer'
     },
     {
       id: 'team',
@@ -188,6 +202,14 @@ const AppContent = () => {
               <Route 
                 path="/security" 
                 element={<SecurityManager />} 
+              />
+              <Route 
+                path="/ai-models" 
+                element={<AIModelManager />} 
+              />
+              <Route 
+                path="/code-analyzer" 
+                element={<SmartCodeAnalyzer />} 
               />
               <Route 
                 path="/team" 
