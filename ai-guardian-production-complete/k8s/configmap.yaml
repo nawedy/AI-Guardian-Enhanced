@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ai-guardian-config
+  namespace: ai-guardian
+data:
+  # Scanner Service Configuration
+  SCANNER_SERVICE_PORT: "5001"
+  SCANNER_SERVICE_HOST: "0.0.0.0"
+  SCANNER_MAX_FILE_SIZE: "10485760"  # 10MB
+  SCANNER_SUPPORTED_LANGUAGES: "python,javascript,java,csharp,go,rust,php,ruby,swift,kotlin"
+  
+  # Adaptive Learning Service Configuration
+  LEARNING_SERVICE_PORT: "5003"
+  LEARNING_SERVICE_HOST: "0.0.0.0"
+  LEARNING_MODEL_UPDATE_INTERVAL: "3600"  # 1 hour
+  LEARNING_FEEDBACK_THRESHOLD: "10"
+  
+  # API Gateway Configuration
+  API_GATEWAY_PORT: "5004"
+  API_GATEWAY_HOST: "0.0.0.0"
+  API_RATE_LIMIT: "1000"  # requests per hour
+  API_TIMEOUT: "30"  # seconds
+  
+  # Database Configuration
+  DATABASE_TYPE: "postgresql"
+  DATABASE_HOST: "postgres-service"
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: "ai_guardian"
+  
+  # Redis Configuration
+  REDIS_HOST: "redis-service"
+  REDIS_PORT: "6379"
+  REDIS_DB: "0"
+  
+  # ML Model Configuration
+  ML_MODEL_PATH: "/app/models"
+  ML_USE_GPU: "false"
+  ML_BATCH_SIZE: "32"
+  ML_CONFIDENCE_THRESHOLD: "0.7"
+  
+  # Security Configuration
+  JWT_EXPIRATION: "3600"  # 1 hour
+  CORS_ORIGINS: "*"
+  SSL_ENABLED: "true"
+  
+  # Monitoring Configuration
+  METRICS_ENABLED: "true"
+  METRICS_PORT: "9090"
+  LOG_LEVEL: "INFO"
+  
+  # Feature Flags
+  ENABLE_ML_DETECTION: "true"
+  ENABLE_REAL_TIME_MONITORING: "true"
+  ENABLE_COMPLIANCE_CHECKING: "true"
+  ENABLE_ADAPTIVE_LEARNING: "true"
+

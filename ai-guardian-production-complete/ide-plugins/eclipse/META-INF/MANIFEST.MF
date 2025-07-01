@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: AI Guardian Eclipse Plugin
+Bundle-SymbolicName: com.aiguardian.eclipse;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.aiguardian.eclipse.Activator
+Bundle-Vendor: AI Guardian Team
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.workbench.texteditor,
+ org.eclipse.jface.text,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.views,
+ org.eclipse.ui.console,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Automatic-Module-Name: com.aiguardian.eclipse
+Bundle-ActivationPolicy: lazy
+Export-Package: com.aiguardian.eclipse.api,
+ com.aiguardian.eclipse.handlers,
+ com.aiguardian.eclipse.views
+Import-Package: org.apache.http.client,
+ org.apache.http.entity,
+ org.apache.http.impl.client,
+ com.google.gson
+

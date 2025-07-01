@@ -1,0 +1,24 @@
+[
+    {
+        "caption": "AI Guardian: Scan Current File",
+        "command": "ai_guardian_scan"
+    },
+    {
+        "caption": "AI Guardian: Check Service Status", 
+        "command": "ai_guardian_status"
+    },
+    {
+        "caption": "AI Guardian: Configure Settings",
+        "command": "ai_guardian_configure"
+    },
+    {
+        "caption": "AI Guardian: Clear Annotations",
+        "command": "ai_guardian_clear_annotations"
+    },
+    {
+        "caption": "AI Guardian: Show Results Panel",
+        "command": "show_panel",
+        "args": {"panel": "output.ai_guardian_results"}
+    }
+]
+

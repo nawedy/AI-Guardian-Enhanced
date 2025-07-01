@@ -1,0 +1,630 @@
+INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:Starting AI Guardian v4.0.0 Integration Tests
+INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:Testing service health checks...
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ code_scanner service is unreachable: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103886950>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ adaptive_learning service is unreachable: HTTPConnectionPool(host='localhost', port=5002): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103894d50>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ api_gateway service is unreachable: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103897550>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ advanced_ml service is unreachable: HTTPConnectionPool(host='localhost', port=5004): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103897450>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ blockchain_security service is unreachable: HTTPConnectionPool(host='localhost', port=5005): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1038946d0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ iot_mobile_security service is unreachable: HTTPConnectionPool(host='localhost', port=5006): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103886350>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ cloud_security service is unreachable: HTTPConnectionPool(host='localhost', port=5007): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1038a2410>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ integrations service is unreachable: HTTPConnectionPool(host='localhost', port=5008): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1038b0790>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ communications service is unreachable: HTTPConnectionPool(host='localhost', port=5009): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1038b2a50>: Failed to establish a new connection: [Errno 61] Connection refused'))
+FINFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:Testing Advanced ML Service integration...
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ Advanced ML Service test failed: HTTPConnectionPool(host='localhost', port=5004): Max retries exceeded with url: /api/v1/ml/analyze-vulnerability (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1038a0290>: Failed to establish a new connection: [Errno 61] Connection refused'))
+FINFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:Testing Blockchain Security Service integration...
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ Blockchain Security Service test failed: HTTPConnectionPool(host='localhost', port=5005): Max retries exceeded with url: /api/v1/blockchain/analyze-contract (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a03d10>: Failed to establish a new connection: [Errno 61] Connection refused'))
+FINFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:Testing IoT/Mobile Security Service integration...
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ IoT Security Service test failed: HTTPConnectionPool(host='localhost', port=5006): Max retries exceeded with url: /api/v1/iot/analyze-device (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a31ed0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+FINFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:Testing Cloud Security Service integration...
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ Cloud Security Service test failed: HTTPConnectionPool(host='localhost', port=5007): Max retries exceeded with url: /api/v1/cloud/aws/scan-environment (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a38390>: Failed to establish a new connection: [Errno 61] Connection refused'))
+FINFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:Testing Integrations Service functionality...
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ SIEM Integration test failed: HTTPConnectionPool(host='localhost', port=5008): Max retries exceeded with url: /api/v1/siem/splunk/send-alert (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a3acd0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+FINFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:Testing Communications Service functionality...
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ Jira Integration test failed: HTTPConnectionPool(host='localhost', port=5009): Max retries exceeded with url: /api/v1/ticketing/jira/create-issue (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a30e50>: Failed to establish a new connection: [Errno 61] Connection refused'))
+FINFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:Testing end-to-end security workflow...
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ End-to-end workflow test failed: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/v1/scan/code (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a300d0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+FINFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:Testing performance benchmarks...
+INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:✅ code_scanner performance test completed
+INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:✅ adaptive_learning performance test completed
+INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:✅ api_gateway performance test completed
+INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:✅ advanced_ml performance test completed
+INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:✅ blockchain_security performance test completed
+INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:✅ iot_mobile_security performance test completed
+INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:✅ cloud_security performance test completed
+INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:✅ integrations performance test completed
+INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:✅ communications performance test completed
+FINFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:Testing security validation...
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ code_scanner security validation failed: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a3aa10>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ adaptive_learning security validation failed: HTTPConnectionPool(host='localhost', port=5002): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1038b24d0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ api_gateway security validation failed: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a70190>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ advanced_ml security validation failed: HTTPConnectionPool(host='localhost', port=5004): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a70090>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ blockchain_security security validation failed: HTTPConnectionPool(host='localhost', port=5005): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a78b50>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ iot_mobile_security security validation failed: HTTPConnectionPool(host='localhost', port=5006): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a728d0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ cloud_security security validation failed: HTTPConnectionPool(host='localhost', port=5007): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x101596550>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ integrations security validation failed: HTTPConnectionPool(host='localhost', port=5008): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a32310>: Failed to establish a new connection: [Errno 61] Connection refused'))
+ERROR:ai-guardian-production-complete.tests.integration.test_system_integration_v4:❌ communications security validation failed: HTTPConnectionPool(host='localhost', port=5009): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1038b2a50>: Failed to establish a new connection: [Errno 61] Connection refused'))
+.INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:AI Guardian v4.0.0 Integration Tests completed
+INFO:ai-guardian-production-complete.tests.integration.test_system_integration_v4:Test report saved to /tmp/ai_guardian_v4_integration_test_report.json
+
+======================================================================
+FAIL: test_01_service_health_checks (ai-guardian-production-complete.tests.integration.test_system_integration_v4.AIGuardianV4IntegrationTests.test_01_service_health_checks)
+Test that all services are running and healthy
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 142, in test_01_service_health_checks
+    self.assertTrue(
+AssertionError: False is not true : Critical service code_scanner is not healthy
+
+======================================================================
+FAIL: test_02_advanced_ml_service_integration (ai-guardian-production-complete.tests.integration.test_system_integration_v4.AIGuardianV4IntegrationTests.test_02_advanced_ml_service_integration)
+Test Advanced ML Service integration
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1289, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1048, in _send_output
+    self.send(msg)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 986, in send
+    self.connect()
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1038a0290>: Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5004): Max retries exceeded with url: /api/v1/ml/analyze-vulnerability (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1038a0290>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 161, in test_02_advanced_ml_service_integration
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5004): Max retries exceeded with url: /api/v1/ml/analyze-vulnerability (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1038a0290>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 180, in test_02_advanced_ml_service_integration
+    self.fail(f"Advanced ML Service integration failed: {e}")
+AssertionError: Advanced ML Service integration failed: HTTPConnectionPool(host='localhost', port=5004): Max retries exceeded with url: /api/v1/ml/analyze-vulnerability (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1038a0290>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+======================================================================
+FAIL: test_03_blockchain_security_integration (ai-guardian-production-complete.tests.integration.test_system_integration_v4.AIGuardianV4IntegrationTests.test_03_blockchain_security_integration)
+Test Blockchain Security Service integration
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1289, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1048, in _send_output
+    self.send(msg)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 986, in send
+    self.connect()
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x103a03d10>: Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5005): Max retries exceeded with url: /api/v1/blockchain/analyze-contract (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a03d10>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 195, in test_03_blockchain_security_integration
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5005): Max retries exceeded with url: /api/v1/blockchain/analyze-contract (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a03d10>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 214, in test_03_blockchain_security_integration
+    self.fail(f"Blockchain Security Service integration failed: {e}")
+AssertionError: Blockchain Security Service integration failed: HTTPConnectionPool(host='localhost', port=5005): Max retries exceeded with url: /api/v1/blockchain/analyze-contract (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a03d10>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+======================================================================
+FAIL: test_04_iot_mobile_security_integration (ai-guardian-production-complete.tests.integration.test_system_integration_v4.AIGuardianV4IntegrationTests.test_04_iot_mobile_security_integration)
+Test IoT/Mobile Security Service integration
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1289, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1048, in _send_output
+    self.send(msg)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 986, in send
+    self.connect()
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x103a31ed0>: Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5006): Max retries exceeded with url: /api/v1/iot/analyze-device (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a31ed0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 229, in test_04_iot_mobile_security_integration
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5006): Max retries exceeded with url: /api/v1/iot/analyze-device (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a31ed0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 247, in test_04_iot_mobile_security_integration
+    self.fail(f"IoT Security Service integration failed: {e}")
+AssertionError: IoT Security Service integration failed: HTTPConnectionPool(host='localhost', port=5006): Max retries exceeded with url: /api/v1/iot/analyze-device (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a31ed0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+======================================================================
+FAIL: test_05_cloud_security_integration (ai-guardian-production-complete.tests.integration.test_system_integration_v4.AIGuardianV4IntegrationTests.test_05_cloud_security_integration)
+Test Cloud Security Service integration
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1289, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1048, in _send_output
+    self.send(msg)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 986, in send
+    self.connect()
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x103a38390>: Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5007): Max retries exceeded with url: /api/v1/cloud/aws/scan-environment (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a38390>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 292, in test_05_cloud_security_integration
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5007): Max retries exceeded with url: /api/v1/cloud/aws/scan-environment (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a38390>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 311, in test_05_cloud_security_integration
+    self.fail(f"Cloud Security Service integration failed: {e}")
+AssertionError: Cloud Security Service integration failed: HTTPConnectionPool(host='localhost', port=5007): Max retries exceeded with url: /api/v1/cloud/aws/scan-environment (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a38390>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+======================================================================
+FAIL: test_06_integrations_service_functionality (ai-guardian-production-complete.tests.integration.test_system_integration_v4.AIGuardianV4IntegrationTests.test_06_integrations_service_functionality)
+Test Integrations Service functionality
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1289, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1048, in _send_output
+    self.send(msg)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 986, in send
+    self.connect()
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x103a3acd0>: Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5008): Max retries exceeded with url: /api/v1/siem/splunk/send-alert (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a3acd0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 335, in test_06_integrations_service_functionality
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5008): Max retries exceeded with url: /api/v1/siem/splunk/send-alert (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a3acd0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 351, in test_06_integrations_service_functionality
+    self.fail(f"SIEM Integration failed: {e}")
+AssertionError: SIEM Integration failed: HTTPConnectionPool(host='localhost', port=5008): Max retries exceeded with url: /api/v1/siem/splunk/send-alert (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a3acd0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+======================================================================
+FAIL: test_07_communications_service_functionality (ai-guardian-production-complete.tests.integration.test_system_integration_v4.AIGuardianV4IntegrationTests.test_07_communications_service_functionality)
+Test Communications Service functionality
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1289, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1048, in _send_output
+    self.send(msg)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 986, in send
+    self.connect()
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x103a30e50>: Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5009): Max retries exceeded with url: /api/v1/ticketing/jira/create-issue (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a30e50>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 433, in test_07_communications_service_functionality
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5009): Max retries exceeded with url: /api/v1/ticketing/jira/create-issue (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a30e50>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 449, in test_07_communications_service_functionality
+    self.fail(f"Jira Integration failed: {e}")
+AssertionError: Jira Integration failed: HTTPConnectionPool(host='localhost', port=5009): Max retries exceeded with url: /api/v1/ticketing/jira/create-issue (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a30e50>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+======================================================================
+FAIL: test_08_end_to_end_workflow (ai-guardian-production-complete.tests.integration.test_system_integration_v4.AIGuardianV4IntegrationTests.test_08_end_to_end_workflow)
+Test complete end-to-end security workflow
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1289, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 1048, in _send_output
+    self.send(msg)
+  File "/opt/anaconda3/lib/python3.11/http/client.py", line 986, in send
+    self.connect()
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x103a300d0>: Failed to establish a new connection: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/v1/scan/code (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a300d0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 522, in test_08_end_to_end_workflow
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.11/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/v1/scan/code (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a300d0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 595, in test_08_end_to_end_workflow
+    self.fail(f"End-to-end workflow failed: {e}")
+AssertionError: End-to-end workflow failed: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/v1/scan/code (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103a300d0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+======================================================================
+FAIL: test_09_performance_benchmarks (ai-guardian-production-complete.tests.integration.test_system_integration_v4.AIGuardianV4IntegrationTests.test_09_performance_benchmarks)
+Test performance benchmarks for all services
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/drgn003/A.I. Guardian/OmniPanelAI Full AI Guardian/ai-guardian-production-complete/tests/integration/test_system_integration_v4.py", line 651, in test_09_performance_benchmarks
+    self.assertGreaterEqual(
+AssertionError: 0.0 not greater than or equal to 90 : code_scanner success rate below 90%
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.205s
+
+FAILED (failures=9)

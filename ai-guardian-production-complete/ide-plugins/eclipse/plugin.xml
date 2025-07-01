@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.aiguardian.eclipse.handlers.ScanFileHandler"
+            id="com.aiguardian.eclipse.commands.scanFile"
+            name="Scan File">
+      </command>
+      <command
+            defaultHandler="com.aiguardian.eclipse.handlers.ScanProjectHandler"
+            id="com.aiguardian.eclipse.commands.scanProject"
+            name="Scan Project">
+      </command>
+      <command
+            defaultHandler="com.aiguardian.eclipse.handlers.ShowReportHandler"
+            id="com.aiguardian.eclipse.commands.showReport"
+            name="Show Security Report">
+      </command>
+      <command
+            defaultHandler="com.aiguardian.eclipse.handlers.ConfigureHandler"
+            id="com.aiguardian.eclipse.commands.configure"
+            name="Configure AI Guardian">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="com.aiguardian.eclipse.menu"
+               label="AI Guardian">
+            <command
+                  commandId="com.aiguardian.eclipse.commands.scanFile"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.aiguardian.eclipse.commands.scanProject"
+                  style="push">
+            </command>
+            <separator
+                  name="com.aiguardian.eclipse.separator1">
+            </separator>
+            <command
+                  commandId="com.aiguardian.eclipse.commands.showReport"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.aiguardian.eclipse.commands.configure"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+      
+      <!-- Context menu for files -->
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               id="com.aiguardian.eclipse.contextmenu"
+               label="AI Guardian">
+            <command
+                  commandId="com.aiguardian.eclipse.commands.scanFile"
+                  style="push">
+            </command>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <adapt
+                           type="org.eclipse.core.resources.IFile">
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+      </menuContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="com.aiguardian.eclipse.views.SecurityReportView"
+            id="com.aiguardian.eclipse.views.SecurityReportView"
+            name="AI Guardian Security Report"
+            restorable="true">
+      </view>
+      <view
+            class="com.aiguardian.eclipse.views.ComplianceView"
+            id="com.aiguardian.eclipse.views.ComplianceView"
+            name="AI Guardian Compliance"
+            restorable="true">
+      </view>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.aiguardian.eclipse.perspectives.SecurityPerspective"
+            id="com.aiguardian.eclipse.perspectives.SecurityPerspective"
+            name="AI Guardian Security">
+      </perspective>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.editors.annotationTypes">
+      <type
+            markerSeverity="2"
+            markerType="com.aiguardian.eclipse.markers.vulnerability"
+            name="com.aiguardian.eclipse.annotations.vulnerability">
+      </type>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.editors.markerAnnotationSpecification">
+      <specification
+            annotationType="com.aiguardian.eclipse.annotations.vulnerability"
+            colorPreferenceKey="vulnerabilityIndicationColor"
+            colorPreferenceValue="255,0,0"
+            highlightPreferenceKey="vulnerabilityHighlighting"
+            highlightPreferenceValue="true"
+            includeOnPreferencePage="true"
+            label="AI Guardian Vulnerability"
+            overviewRulerPreferenceKey="vulnerabilityIndicationInOverviewRuler"
+            overviewRulerPreferenceValue="true"
+            presentationLayer="5"
+            textPreferenceKey="vulnerabilityIndication"
+            textPreferenceValue="true"
+            textStylePreferenceKey="vulnerabilityTextStyle"
+            textStylePreferenceValue="SQUIGGLES"
+            verticalRulerPreferenceKey="vulnerabilityIndicationInVerticalRuler"
+            verticalRulerPreferenceValue="true">
+      </specification>
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.resources.markers">
+      <marker
+            id="com.aiguardian.eclipse.markers.vulnerability"
+            name="AI Guardian Vulnerability Marker"
+            persistent="true"
+            super="org.eclipse.core.resources.problemmarker">
+         <attribute
+               name="severity">
+         </attribute>
+         <attribute
+               name="message">
+         </attribute>
+         <attribute
+               name="lineNumber">
+         </attribute>
+         <attribute
+               name="charStart">
+         </attribute>
+         <attribute
+               name="charEnd">
+         </attribute>
+         <attribute
+               name="vulnerabilityType">
+         </attribute>
+         <attribute
+               name="confidence">
+         </attribute>
+         <attribute
+               name="fixSuggestion">
+         </attribute>
+      </marker>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.aiguardian.eclipse.preferences.AIGuardianPreferencePage"
+            id="com.aiguardian.eclipse.preferences.AIGuardianPreferencePage"
+            name="AI Guardian">
+      </page>
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.aiguardian.eclipse.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="com.aiguardian.eclipse.startup.AIGuardianStartup">
+      </startup>
+   </extension>
+</plugin>
+

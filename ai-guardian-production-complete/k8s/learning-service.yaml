@@ -1,0 +1,157 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learning-service-deployment
+  namespace: ai-guardian
+  labels:
+    app: learning-service
+    component: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: learning-service
+  template:
+    metadata:
+      labels:
+        app: learning-service
+    spec:
+      containers:
+      - name: learning-service
+        image: ai-guardian/learning-service:latest
+        ports:
+        - containerPort: 5003
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: LEARNING_SERVICE_PORT
+        - name: HOST
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: LEARNING_SERVICE_HOST
+        - name: DATABASE_URL
+          value: "postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/$(DATABASE_NAME)"
+        - name: DATABASE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: ai-guardian-secrets
+              key: DATABASE_USERNAME
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ai-guardian-secrets
+              key: DATABASE_PASSWORD
+        - name: DATABASE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: DATABASE_HOST
+        - name: DATABASE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: DATABASE_PORT
+        - name: DATABASE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: DATABASE_NAME
+        - name: REDIS_URL
+          value: "redis://:$(REDIS_PASSWORD)@$(REDIS_HOST):$(REDIS_PORT)/$(REDIS_DB)"
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ai-guardian-secrets
+              key: REDIS_PASSWORD
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: REDIS_HOST
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: REDIS_PORT
+        - name: MODEL_UPDATE_INTERVAL
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: LEARNING_MODEL_UPDATE_INTERVAL
+        volumeMounts:
+        - name: ml-models
+          mountPath: /app/models
+        - name: training-data
+          mountPath: /app/data
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 5003
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 5003
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      volumes:
+      - name: ml-models
+        persistentVolumeClaim:
+          claimName: ml-models-pvc
+      - name: training-data
+        persistentVolumeClaim:
+          claimName: training-data-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: learning-service
+  namespace: ai-guardian
+  labels:
+    app: learning-service
+spec:
+  selector:
+    app: learning-service
+  ports:
+  - port: 5003
+    targetPort: 5003
+    name: http
+  type: ClusterIP
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ml-models-pvc
+  namespace: ai-guardian
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: standard
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: training-data-pvc
+  namespace: ai-guardian
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: standard
+

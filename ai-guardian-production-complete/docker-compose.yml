@@ -1,0 +1,300 @@
+# AI Guardian Enhanced v4.0.0 - Unified Production Docker Compose
+# This file defines the entire application stack for a secure, container-based deployment.
+
+# To run:
+# 1. Create a .env file from .env.example
+# 2. Populate .env with your configuration
+# 3. Run 'docker-compose up --build -d'
+
+services:
+  # --------------------
+  #  Core Infrastructure
+  # --------------------
+  postgres:
+    image: postgres:14-alpine
+    container_name: ai_guardian_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: ai_guardian_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # --------------------
+  #  Backend Services
+  # --------------------
+  api-gateway:
+    build:
+      context: ./backend/api-gateway/api-gateway-service
+      dockerfile: Dockerfile
+    container_name: ai_guardian_api_gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - LOG_LEVEL=${LOG_LEVEL}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  code-scanner:
+    build:
+      context: ./backend/code-scanner/code-scanner-service
+      dockerfile: Dockerfile
+    container_name: ai_guardian_code_scanner
+    ports:
+      - "5001:5001"
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - LOG_LEVEL=${LOG_LEVEL}
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  adaptive-learning:
+    build:
+      context: ./backend/adaptive-learning/adaptive-learning-service
+      dockerfile: Dockerfile
+    container_name: ai_guardian_adaptive_learning
+    ports:
+      - "5002:5002"
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - LOG_LEVEL=${LOG_LEVEL}
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  remediation-engine:
+    build:
+      context: ./backend/remediation-engine/remediation-engine-service
+      dockerfile: Dockerfile
+    container_name: ai_guardian_remediation_engine
+    ports:
+      - "5003:5003"
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - LOG_LEVEL=${LOG_LEVEL}
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  advanced-ml:
+    build:
+      context: ./backend/advanced-ml-service
+      dockerfile: Dockerfile
+    container_name: ai_guardian_advanced_ml
+    ports:
+      - "5004:5004"
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - LOG_LEVEL=${LOG_LEVEL}
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  blockchain-security:
+    build:
+      context: ./backend/blockchain-security-service
+      dockerfile: Dockerfile
+    container_name: ai_guardian_blockchain_security
+    ports:
+      - "5005:5005"
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - LOG_LEVEL=${LOG_LEVEL}
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  iot-mobile-security:
+    build:
+      context: ./backend/iot-mobile-security-service
+      dockerfile: Dockerfile
+    container_name: ai_guardian_iot_mobile_security
+    ports:
+      - "5006:5006"
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - LOG_LEVEL=${LOG_LEVEL}
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  cloud-security:
+    build:
+      context: ./backend/cloud-security-service
+      dockerfile: Dockerfile
+    container_name: ai_guardian_cloud_security
+    ports:
+      - "5007:5007"
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  integrations-service:
+    build:
+      context: ./backend/integrations-service
+      dockerfile: Dockerfile
+    container_name: ai_guardian_integrations_service
+    ports:
+      - "5008:5008"
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - JIRA_URL=${JIRA_URL}
+      - JIRA_USERNAME=${JIRA_USERNAME}
+      - JIRA_API_TOKEN=${JIRA_API_TOKEN}
+      - SPLUNK_HOST=${SPLUNK_HOST}
+      - SPLUNK_USERNAME=${SPLUNK_USERNAME}
+      - SPLUNK_PASSWORD=${SPLUNK_PASSWORD}
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  communications-service:
+    build:
+      context: ./backend/communications-service
+      dockerfile: Dockerfile
+    container_name: ai_guardian_communications_service
+    ports:
+      - "5009:5009"
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USERNAME=${SMTP_USERNAME}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - SMTP_USE_TLS=${SMTP_USE_TLS}
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  intelligent-analysis:
+    build:
+      context: ./backend/intelligent-analysis/intelligent-analysis-service
+      dockerfile: Dockerfile
+    container_name: ai_guardian_intelligent_analysis
+    ports:
+      - "5010:5010"
+    environment:
+      - POSTGRES_URL=${POSTGRES_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - LOG_LEVEL=${LOG_LEVEL}
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  # --------------------
+  #  Frontend Service
+  # --------------------
+  web-dashboard:
+    build:
+      context: ./frontend/web-dashboard/web-dashboard
+      dockerfile: Dockerfile
+    container_name: ai_guardian_web_dashboard
+    ports:
+      - "3000:80"
+    environment:
+      - API_BASE_URL=http://api-gateway:8000
+    depends_on:
+      - api-gateway
+    restart: unless-stopped
+
+  # --------------------
+  #  Monitoring
+  # --------------------
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: ai_guardian_prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: ai_guardian_grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+    volumes:
+      - grafana_data:/var/lib/grafana
+    restart: unless-stopped
+
+# --------------------
+#  Volumes
+# --------------------
+volumes:
+  postgres_data:
+  redis_data:
+  grafana_data: 

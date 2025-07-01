@@ -1,0 +1,163 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scanner-service-deployment
+  namespace: ai-guardian
+  labels:
+    app: scanner-service
+    component: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: scanner-service
+  template:
+    metadata:
+      labels:
+        app: scanner-service
+    spec:
+      containers:
+      - name: scanner-service
+        image: ai-guardian/scanner-service:latest
+        ports:
+        - containerPort: 5001
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: SCANNER_SERVICE_PORT
+        - name: HOST
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: SCANNER_SERVICE_HOST
+        - name: DATABASE_URL
+          value: "postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/$(DATABASE_NAME)"
+        - name: DATABASE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: ai-guardian-secrets
+              key: DATABASE_USERNAME
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ai-guardian-secrets
+              key: DATABASE_PASSWORD
+        - name: DATABASE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: DATABASE_HOST
+        - name: DATABASE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: DATABASE_PORT
+        - name: DATABASE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: DATABASE_NAME
+        - name: REDIS_URL
+          value: "redis://:$(REDIS_PASSWORD)@$(REDIS_HOST):$(REDIS_PORT)/$(REDIS_DB)"
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ai-guardian-secrets
+              key: REDIS_PASSWORD
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: REDIS_HOST
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: REDIS_PORT
+        - name: REDIS_DB
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: REDIS_DB
+        - name: ML_MODEL_PATH
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: ML_MODEL_PATH
+        - name: ENABLE_ML_DETECTION
+          valueFrom:
+            configMapKeyRef:
+              name: ai-guardian-config
+              key: ENABLE_ML_DETECTION
+        volumeMounts:
+        - name: ml-models
+          mountPath: /app/models
+          readOnly: true
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5001
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5001
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      volumes:
+      - name: ml-models
+        configMap:
+          name: ml-models-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scanner-service
+  namespace: ai-guardian
+  labels:
+    app: scanner-service
+spec:
+  selector:
+    app: scanner-service
+  ports:
+  - port: 5001
+    targetPort: 5001
+    name: http
+  type: ClusterIP
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: scanner-service-hpa
+  namespace: ai-guardian
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: scanner-service-deployment
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+

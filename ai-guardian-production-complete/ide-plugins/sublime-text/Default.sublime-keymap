@@ -1,0 +1,15 @@
+[
+    {
+        "keys": ["ctrl+alt+s"],
+        "command": "ai_guardian_scan"
+    },
+    {
+        "keys": ["ctrl+alt+shift+s"],
+        "command": "ai_guardian_status"
+    },
+    {
+        "keys": ["ctrl+alt+c"],
+        "command": "ai_guardian_clear_annotations"
+    }
+]
+

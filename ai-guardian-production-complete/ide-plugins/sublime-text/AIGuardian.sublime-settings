@@ -1,0 +1,62 @@
+{
+    // AI Guardian API Configuration
+    "api_url": "http://localhost:5004/api/ide",
+    "timeout": 30,
+    
+    // Scanning Options
+    "real_time_scanning": false,
+    "scan_on_save": true,
+    "auto_scan_delay": 2.0,
+    
+    // Display Options
+    "show_vulnerability_annotations": true,
+    "show_compliance_annotations": true,
+    "highlight_severity_colors": {
+        "critical": "markup.error",
+        "high": "markup.error", 
+        "medium": "markup.warning",
+        "low": "markup.info"
+    },
+    
+    // Supported Languages
+    "supported_languages": [
+        "python",
+        "java", 
+        "javascript",
+        "typescript",
+        "csharp",
+        "go",
+        "rust",
+        "php",
+        "ruby",
+        "swift",
+        "kotlin"
+    ],
+    
+    // Compliance Monitoring
+    "compliance_regulations": [
+        "GDPR",
+        "CCPA", 
+        "HIPAA",
+        "PCI-DSS",
+        "SOX"
+    ],
+    
+    // Adaptive Learning
+    "enable_adaptive_learning": true,
+    "submit_anonymous_feedback": true,
+    
+    // Performance
+    "max_file_size_kb": 1024,
+    "concurrent_scans": 2,
+    
+    // UI Preferences
+    "show_scan_progress": true,
+    "show_scan_summary": true,
+    "auto_show_results_panel": true,
+    
+    // Debug Options
+    "debug_mode": false,
+    "log_api_requests": false
+}
+

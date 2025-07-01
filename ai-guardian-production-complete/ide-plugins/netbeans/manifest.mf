@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+OpenIDE-Module: com.aiguardian.netbeans
+OpenIDE-Module-Localizing-Bundle: com/aiguardian/netbeans/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+OpenIDE-Module-Display-Category: Security
+OpenIDE-Module-Name: AI Guardian Security Scanner
+OpenIDE-Module-Short-Description: AI-powered vulnerability detection and compliance monitoring for NetBeans
+OpenIDE-Module-Long-Description: AI Guardian provides real-time code scanning for security vulnerabilities, compliance monitoring for GDPR/CCPA/HIPAA, and adaptive learning to reduce false positives. Integrates seamlessly with NetBeans IDE for continuous security analysis during development.
+OpenIDE-Module-Module-Dependencies: 
+ org.netbeans.api.annotations.common,
+ org.netbeans.modules.editor.mimelookup,
+ org.netbeans.modules.editor.lib2,
+ org.netbeans.modules.projectapi,
+ org.netbeans.modules.projectuiapi,
+ org.openide.actions,
+ org.openide.awt,
+ org.openide.dialogs,
+ org.openide.filesystems,
+ org.openide.loaders,
+ org.openide.nodes,
+ org.openide.text,
+ org.openide.util,
+ org.openide.util.lookup,
+ org.openide.windows
+

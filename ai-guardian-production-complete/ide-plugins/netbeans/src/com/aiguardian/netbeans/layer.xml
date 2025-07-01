@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <!-- Menu contributions -->
+    <folder name="Menu">
+        <folder name="Tools">
+            <folder name="AIGuardian">
+                <attr name="displayName" bundlevalue="com.aiguardian.netbeans.Bundle#Menu/Tools/AIGuardian"/>
+                <attr name="position" intvalue="1000"/>
+                
+                <file name="ScanCurrentFile.instance">
+                    <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
+                    <attr name="delegate" newvalue="com.aiguardian.netbeans.actions.ScanCurrentFileAction"/>
+                    <attr name="displayName" bundlevalue="com.aiguardian.netbeans.Bundle#CTL_ScanCurrentFileAction"/>
+                    <attr name="iconBase" stringvalue="com/aiguardian/netbeans/icons/scan-file.png"/>
+                </file>
+                
+                <file name="ScanProject.instance">
+                    <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
+                    <attr name="delegate" newvalue="com.aiguardian.netbeans.actions.ScanProjectAction"/>
+                    <attr name="displayName" bundlevalue="com.aiguardian.netbeans.Bundle#CTL_ScanProjectAction"/>
+                    <attr name="iconBase" stringvalue="com/aiguardian/netbeans/icons/scan-project.png"/>
+                </file>
+                
+                <file name="separator1.instance">
+                    <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                </file>
+                
+                <file name="ShowSecurityReport.instance">
+                    <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
+                    <attr name="delegate" newvalue="com.aiguardian.netbeans.actions.ShowSecurityReportAction"/>
+                    <attr name="displayName" bundlevalue="com.aiguardian.netbeans.Bundle#CTL_ShowSecurityReportAction"/>
+                    <attr name="iconBase" stringvalue="com/aiguardian/netbeans/icons/security-report.png"/>
+                </file>
+                
+                <file name="ShowComplianceReport.instance">
+                    <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
+                    <attr name="delegate" newvalue="com.aiguardian.netbeans.actions.ShowComplianceReportAction"/>
+                    <attr name="displayName" bundlevalue="com.aiguardian.netbeans.Bundle#CTL_ShowComplianceReportAction"/>
+                    <attr name="iconBase" stringvalue="com/aiguardian/netbeans/icons/compliance-report.png"/>
+                </file>
+                
+                <file name="separator2.instance">
+                    <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                </file>
+                
+                <file name="Configure.instance">
+                    <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
+                    <attr name="delegate" newvalue="com.aiguardian.netbeans.actions.ConfigureAction"/>
+                    <attr name="displayName" bundlevalue="com.aiguardian.netbeans.Bundle#CTL_ConfigureAction"/>
+                    <attr name="iconBase" stringvalue="com/aiguardian/netbeans/icons/configure.png"/>
+                </file>
+            </folder>
+        </folder>
+    </folder>
+    
+    <!-- Context menu contributions -->
+    <folder name="Loaders">
+        <folder name="text">
+            <folder name="x-java">
+                <folder name="Actions">
+                    <file name="com-aiguardian-netbeans-actions-ScanCurrentFileAction.instance"/>
+                </folder>
+            </folder>
+            <folder name="x-python">
+                <folder name="Actions">
+                    <file name="com-aiguardian-netbeans-actions-ScanCurrentFileAction.instance"/>
+                </folder>
+            </folder>
+            <folder name="javascript">
+                <folder name="Actions">
+                    <file name="com-aiguardian-netbeans-actions-ScanCurrentFileAction.instance"/>
+                </folder>
+            </folder>
+        </folder>
+    </folder>
+    
+    <!-- Toolbar contributions -->
+    <folder name="Toolbars">
+        <folder name="AIGuardian">
+            <attr name="displayName" bundlevalue="com.aiguardian.netbeans.Bundle#Toolbars/AIGuardian"/>
+            
+            <file name="ScanCurrentFile.instance">
+                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
+                <attr name="delegate" newvalue="com.aiguardian.netbeans.actions.ScanCurrentFileAction"/>
+                <attr name="displayName" bundlevalue="com.aiguardian.netbeans.Bundle#CTL_ScanCurrentFileAction"/>
+                <attr name="iconBase" stringvalue="com/aiguardian/netbeans/icons/scan-file.png"/>
+            </file>
+            
+            <file name="ScanProject.instance">
+                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
+                <attr name="delegate" newvalue="com.aiguardian.netbeans.actions.ScanProjectAction"/>
+                <attr name="displayName" bundlevalue="com.aiguardian.netbeans.Bundle#CTL_ScanProjectAction"/>
+                <attr name="iconBase" stringvalue="com/aiguardian/netbeans/icons/scan-project.png"/>
+            </file>
+        </folder>
+    </folder>
+    
+    <!-- Window system contributions -->
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="AIGuardianSecurityReportTopComponent.settings" url="AIGuardianSecurityReportTopComponentSettings.xml"/>
+            <file name="AIGuardianComplianceReportTopComponent.settings" url="AIGuardianComplianceReportTopComponentSettings.xml"/>
+        </folder>
+        <folder name="Modes">
+            <folder name="rightSlidingSide">
+                <file name="AIGuardianSecurityReportTopComponent.wstcref" url="AIGuardianSecurityReportTopComponentWstcref.xml"/>
+                <file name="AIGuardianComplianceReportTopComponent.wstcref" url="AIGuardianComplianceReportTopComponentWstcref.xml"/>
+            </folder>
+        </folder>
+    </folder>
+    
+    <!-- Services -->
+    <folder name="Services">
+        <folder name="AIGuardian">
+            <file name="AIGuardianService.instance">
+                <attr name="instanceClass" stringvalue="com.aiguardian.netbeans.services.AIGuardianService"/>
+                <attr name="instanceOf" stringvalue="com.aiguardian.netbeans.services.AIGuardianService"/>
+            </file>
+        </folder>
+    </folder>
+    
+    <!-- Options -->
+    <folder name="OptionsDialog">
+        <folder name="Advanced">
+            <file name="AIGuardian.instance">
+                <attr name="instanceClass" stringvalue="com.aiguardian.netbeans.options.AIGuardianOptionsPanelController"/>
+                <attr name="controller" newvalue="com.aiguardian.netbeans.options.AIGuardianOptionsPanelController"/>
+                <attr name="displayName" bundlevalue="com.aiguardian.netbeans.Bundle#OptionsCategory_Name_AIGuardian"/>
+                <attr name="iconBase" stringvalue="com/aiguardian/netbeans/icons/options.png"/>
+                <attr name="position" intvalue="1000"/>
+            </file>
+        </folder>
+    </folder>
+</filesystem>
+

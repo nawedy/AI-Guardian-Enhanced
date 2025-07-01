@@ -1,0 +1,112 @@
+# AI Guardian Enhanced - Development Overrides
+# This file provides development-specific configurations.
+# It is automatically merged with docker-compose.yml by Docker Compose.
+
+# To run in development mode:
+# 1. Ensure you have a .env file configured.
+# 2. Run 'docker-compose up --build'
+
+services:
+  # --------------------
+  #  Backend Overrides
+  # --------------------
+  api-gateway:
+    build:
+      context: ./backend/api-gateway/api-gateway-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/api-gateway/api-gateway-service/src:/app
+    command: ["flask", "--app", "main", "run", "--host=0.0.0.0", "--port=8000", "--debug"]
+
+  code-scanner:
+    build:
+      context: ./backend/code-scanner/code-scanner-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/code-scanner/code-scanner-service/src:/app
+    command: ["flask", "--app", "main", "run", "--host=0.0.0.0", "--port=5001", "--debug"]
+
+  adaptive-learning:
+    build:
+      context: ./backend/adaptive-learning/adaptive-learning-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/adaptive-learning/adaptive-learning-service/src:/app
+    command: ["flask", "--app", "main", "run", "--host=0.0.0.0", "--port=5002", "--debug"]
+
+  remediation-engine:
+    build:
+      context: ./backend/remediation-engine/remediation-engine-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/remediation-engine/remediation-engine-service/src:/app
+    command: ["flask", "--app", "main", "run", "--host=0.0.0.0", "--port=5003", "--debug"]
+
+  advanced-ml:
+    build:
+      context: ./backend/advanced-ml-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/advanced-ml-service/src:/app
+    command: ["flask", "--app", "main", "run", "--host=0.0.0.0", "--port=5004", "--debug"]
+
+  blockchain-security:
+    build:
+      context: ./backend/blockchain-security-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/blockchain-security-service/src:/app
+    command: ["flask", "--app", "main", "run", "--host=0.0.0.0", "--port=5005", "--debug"]
+
+  iot-mobile-security:
+    build:
+      context: ./backend/iot-mobile-security-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/iot-mobile-security-service/src:/app
+    command: ["flask", "--app", "main", "run", "--host=0.0.0.0", "--port=5006", "--debug"]
+
+  cloud-security:
+    build:
+      context: ./backend/cloud-security-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/cloud-security-service/src:/app
+    command: ["flask", "--app", "main", "run", "--host=0.0.0.0", "--port=5007", "--debug"]
+
+  integrations-service:
+    build:
+      context: ./backend/integrations-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/integrations-service/src:/app
+    command: ["flask", "--app", "main", "run", "--host=0.0.0.0", "--port=5008", "--debug"]
+
+  communications-service:
+    build:
+      context: ./backend/communications-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/communications-service/src:/app
+    command: ["flask", "--app", "main", "run", "--host=0.0.0.0", "--port=5009", "--debug"]
+
+  intelligent-analysis:
+    build:
+      context: ./backend/intelligent-analysis/intelligent-analysis-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/intelligent-analysis/intelligent-analysis-service/src:/app
+    command: ["flask", "--app", "main", "run", "--host=0.0.0.0", "--port=5010", "--debug"]
+
+  # --------------------
+  #  Frontend Overrides
+  # --------------------
+  web-dashboard:
+    build:
+      context: ./frontend/web-dashboard/web-dashboard
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/web-dashboard/web-dashboard/src:/app/src
+    command: ["pnpm", "run", "dev"] # Assumes vite dev server runs on port 80 internally
+    ports:
+      - "3000:5173" # Default Vite port 

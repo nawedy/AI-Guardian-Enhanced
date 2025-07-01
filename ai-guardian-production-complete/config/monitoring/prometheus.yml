@@ -1,0 +1,24 @@
+# prometheus.yml
+# Description: Prometheus configuration for AI Guardian.
+
+global:
+  scrape_interval: 15s # By default, scrape targets every 15 seconds.
+
+scrape_configs:
+  - job_name: 'prometheus'
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'api-gateway'
+    # This service needs to expose a /metrics endpoint for Prometheus to scrape.
+    # We assume the application uses a Prometheus client library to do so.
+    static_configs:
+      - targets: ['api-gateway:8000']
+
+  # Add similar job configurations for other backend services here.
+  # For example:
+  # - job_name: 'code-scanner'
+  #   static_configs:
+  #     - targets: ['code-scanner:5001'] 

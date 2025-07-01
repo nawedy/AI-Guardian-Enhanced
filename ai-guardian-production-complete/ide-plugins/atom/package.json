@@ -1,0 +1,95 @@
+{
+  "name": "ai-guardian-atom",
+  "main": "./lib/ai-guardian",
+  "version": "3.0.0",
+  "description": "AI Guardian security scanning integration for Atom Editor",
+  "keywords": [
+    "security",
+    "vulnerability",
+    "scanning",
+    "ai",
+    "guardian",
+    "cybersecurity"
+  ],
+  "repository": "https://github.com/omnipanel/ai-guardian",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "ws": "^8.14.0"
+  },
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "provideLinter"
+      }
+    }
+  },
+  "consumedServices": {
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    }
+  },
+  "activationCommands": {
+    "atom-workspace": [
+      "ai-guardian:scan-file",
+      "ai-guardian:scan-project",
+      "ai-guardian:toggle-real-time",
+      "ai-guardian:show-settings"
+    ]
+  },
+  "menus": {
+    "atom": [
+      {
+        "label": "Packages",
+        "submenu": [
+          {
+            "label": "AI Guardian",
+            "submenu": [
+              {
+                "label": "Scan Current File",
+                "command": "ai-guardian:scan-file"
+              },
+              {
+                "label": "Scan Entire Project",
+                "command": "ai-guardian:scan-project"
+              },
+              {
+                "label": "Toggle Real-time Scanning",
+                "command": "ai-guardian:toggle-real-time"
+              },
+              {
+                "label": "Settings",
+                "command": "ai-guardian:show-settings"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "context": [
+      {
+        "label": "AI Guardian: Scan File",
+        "command": "ai-guardian:scan-file",
+        "shouldDisplay": [
+          {
+            "event": "contextmenu",
+            "target": ".tree-view .file"
+          }
+        ]
+      }
+    ]
+  },
+  "keymaps": {
+    "atom-workspace": {
+      "ctrl-alt-g s": "ai-guardian:scan-file",
+      "ctrl-alt-g p": "ai-guardian:scan-project",
+      "ctrl-alt-g t": "ai-guardian:toggle-real-time"
+    }
+  }
+}
+

@@ -1,0 +1,186 @@
+{
+  "name": "ai-guardian-codespaces",
+  "displayName": "AI Guardian for GitHub Codespaces",
+  "description": "Real-time security scanning and vulnerability detection for GitHub Codespaces",
+  "version": "3.0.0",
+  "publisher": "omnipanel-ai",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "security",
+    "vulnerability",
+    "scanning",
+    "ai",
+    "guardian",
+    "codespaces",
+    "github"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-guardian.scanFile",
+        "title": "Scan Current File",
+        "category": "AI Guardian"
+      },
+      {
+        "command": "ai-guardian.scanWorkspace",
+        "title": "Scan Workspace",
+        "category": "AI Guardian"
+      },
+      {
+        "command": "ai-guardian.toggleRealTime",
+        "title": "Toggle Real-time Scanning",
+        "category": "AI Guardian"
+      },
+      {
+        "command": "ai-guardian.showDashboard",
+        "title": "Open Security Dashboard",
+        "category": "AI Guardian"
+      },
+      {
+        "command": "ai-guardian.configureSettings",
+        "title": "Configure Settings",
+        "category": "AI Guardian"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "ai-guardian.scanFile",
+        "key": "ctrl+alt+g s",
+        "mac": "cmd+alt+g s"
+      },
+      {
+        "command": "ai-guardian.scanWorkspace",
+        "key": "ctrl+alt+g w",
+        "mac": "cmd+alt+g w"
+      },
+      {
+        "command": "ai-guardian.toggleRealTime",
+        "key": "ctrl+alt+g t",
+        "mac": "cmd+alt+g t"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "ai-guardian.scanFile",
+          "when": "resourceExtname =~ /\\.(py|js|ts|java|cs|go|rs|php|rb|swift|kt)$/",
+          "group": "ai-guardian"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "ai-guardian.scanFile",
+          "when": "resourceExtname =~ /\\.(py|js|ts|java|cs|go|rs|php|rb|swift|kt)$/",
+          "group": "ai-guardian"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "ai-guardian.scanFile",
+          "when": "editorIsOpen"
+        },
+        {
+          "command": "ai-guardian.scanWorkspace",
+          "when": "workspaceFolderCount > 0"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "AI Guardian",
+      "properties": {
+        "ai-guardian.apiUrl": {
+          "type": "string",
+          "default": "http://localhost:5002",
+          "description": "AI Guardian API base URL"
+        },
+        "ai-guardian.websocketUrl": {
+          "type": "string",
+          "default": "ws://localhost:8765",
+          "description": "WebSocket URL for real-time monitoring"
+        },
+        "ai-guardian.autoScan": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable automatic scanning on file changes"
+        },
+        "ai-guardian.scanOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Scan files when saved"
+        },
+        "ai-guardian.showInlineDecorations": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show inline decorations for vulnerabilities"
+        },
+        "ai-guardian.enableDiagnostics": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable diagnostic messages for vulnerabilities"
+        },
+        "ai-guardian.codespaceMode": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Codespace-specific optimizations"
+        },
+        "ai-guardian.cloudApiEndpoint": {
+          "type": "string",
+          "default": "https://api.ai-guardian.cloud",
+          "description": "Cloud API endpoint for Codespaces (when local API not available)"
+        }
+      ]
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "ai-guardian-vulnerabilities",
+          "name": "AI Guardian",
+          "when": "ai-guardian:hasVulnerabilities"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ai-guardian-container",
+          "title": "AI Guardian",
+          "icon": "$(shield)"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "ws": "^8.14.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omnipanel/ai-guardian.git"
+  },
+  "bugs": {
+    "url": "https://github.com/omnipanel/ai-guardian/issues"
+  },
+  "homepage": "https://github.com/omnipanel/ai-guardian#readme",
+  "license": "MIT"
+}
+
