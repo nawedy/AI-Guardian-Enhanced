@@ -17,6 +17,7 @@ import VulnerabilityDetails from './components/VulnerabilityDetails';
 import AnalyticsDashboard from './components/analytics/AnalyticsDashboard';
 import IntegrationsManager from './components/integrations/IntegrationsManager';
 import SecurityManager from './components/security/SecurityManager';
+import ComprehensiveSecurityManager from './components/security/ComprehensiveSecurityManager';
 import AIModelManager from './components/ai/AIModelManager';
 import SmartCodeAnalyzer from './components/ai/SmartCodeAnalyzer';
 import ProjectManager from './components/projects/ProjectManager';
